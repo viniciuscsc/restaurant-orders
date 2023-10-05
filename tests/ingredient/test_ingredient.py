@@ -19,4 +19,9 @@ def test_ingredient():
 
     #  o método mágico __eq__ funcione como esperado
     outra_mussarela = Ingredient("queijo mussarela")
+    assert mussarela == outra_mussarela
     assert repr(mussarela) == repr(outra_mussarela)
+
+    farinha = Ingredient("farinha")
+    assert mussarela != farinha
+    assert repr(mussarela) != repr(farinha)
