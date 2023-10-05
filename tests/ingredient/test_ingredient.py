@@ -10,11 +10,13 @@ def test_ingredient():
     assert mussarela.name == "queijo mussarela"
 
     # "restrictions" tem valores corretos para o ingrediente do construtor
-    restricoes = {"LACTOSE", "ANIMAL_DERIVED"}
-    assert mussarela.restrictions == restricoes
+    restricoes_mussarela = {"LACTOSE", "ANIMAL_DERIVED"}
+    assert mussarela.restrictions == restricoes_mussarela
 
     # o método mágico __repr__ funcione como esperado
-    repr_ingrediente = "Ingredient('queijo mussarela')"
-    assert repr(mussarela) == repr_ingrediente
+    repr_mussarela = "Ingredient('queijo mussarela')"
+    assert repr(mussarela) == repr_mussarela
 
     #  o método mágico __eq__ funcione como esperado
+    outra_mussarela = Ingredient("queijo mussarela")
+    assert repr(mussarela) == repr(outra_mussarela)
