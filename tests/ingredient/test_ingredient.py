@@ -5,3 +5,6 @@ def test_ingredient():
     # a classe pode ser instanciada
     ingrediente = Ingredient("queijo mussarela")
     assert isinstance(ingrediente, Ingredient)
+
+    # "name" é igual ao passado no construtor
+    assert ingrediente.name == "queijo mussarela"
