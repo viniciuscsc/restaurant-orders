@@ -12,3 +12,7 @@ def test_ingredient():
     # "restrictions" tem valores corretos para o ingrediente do construtor
     restricoes = {"LACTOSE", "ANIMAL_DERIVED"}
     assert ingrediente.restrictions == restricoes
+
+    # o método mágico __repr__ funcione como esperado
+    repr_ingrediente = "Ingredient('queijo mussarela')"
+    assert repr(ingrediente) == repr_ingrediente
