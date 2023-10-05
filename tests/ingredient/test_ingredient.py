@@ -1,4 +1,7 @@
-from src.models.ingredient import Ingredient  # noqa: F401, E261, E501
+from src.models.ingredient import (
+    Ingredient,
+    Restriction,
+)  # noqa: F401, E261, E501
 
 
 def test_ingredient():
@@ -10,7 +13,7 @@ def test_ingredient():
     assert mussarela.name == "queijo mussarela"
 
     # "restrictions" tem valores corretos para o ingrediente do construtor
-    restricoes_mussarela = {"LACTOSE", "ANIMAL_DERIVED"}
+    restricoes_mussarela = {Restriction.LACTOSE, Restriction.ANIMAL_DERIVED}
     assert mussarela.restrictions == restricoes_mussarela
 
     # o método mágico __repr__ funcione como esperado
