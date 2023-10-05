@@ -8,3 +8,7 @@ def test_ingredient():
 
     # "name" é igual ao passado no construtor
     assert ingrediente.name == "queijo mussarela"
+
+    # "restrictions" tem valores corretos para o ingrediente do construtor
+    restricoes = {"LACTOSE", "ANIMAL_DERIVED"}
+    assert ingrediente.restrictions == restricoes
