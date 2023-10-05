@@ -1,7 +1,7 @@
-# iniciando o projeto restaurant orders
 from src.models.ingredient import Ingredient  # noqa: F401, E261, E501
 
 
-# Req 1
 def test_ingredient():
-    pass
+    # a classe pode ser instanciada
+    ingrediente = Ingredient("queijo mussarela")
+    assert isinstance(ingrediente, Ingredient)
