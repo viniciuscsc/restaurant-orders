@@ -17,7 +17,7 @@ def test_ingredient():
     repr_mussarela = "Ingredient('queijo mussarela')"
     assert repr(mussarela) == repr_mussarela
 
-    #  o método mágico __eq__ funcione como esperado
+    # o método mágico __eq__ funcione como esperado
     outra_mussarela = Ingredient("queijo mussarela")
     assert mussarela == outra_mussarela
     assert repr(mussarela) == repr(outra_mussarela)
@@ -25,3 +25,8 @@ def test_ingredient():
     farinha = Ingredient("farinha")
     assert mussarela != farinha
     assert repr(mussarela) != repr(farinha)
+
+    # o método mágico __hash__ funcione como esperado
+    assert hash(mussarela) == hash("queijo mussarela")
+    assert hash(mussarela) == hash(outra_mussarela)
+    assert hash(mussarela) != hash(farinha)
