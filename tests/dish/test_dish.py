@@ -43,3 +43,7 @@ def test_dish():
 
     lasanha.add_ingredient_dependency(massa_lasanha, 500)
     ravioli.add_ingredient_dependency(massa_ravioli, 300)
+
+    # é possível obter a quantidade de ingrediente adicionado
+    assert lasanha.recipe.get(massa_lasanha) == 500
+    assert ravioli.recipe.get(massa_ravioli) == 300
