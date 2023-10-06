@@ -5,21 +5,21 @@ from src.models.ingredient import Ingredient
 
 def test_dish():
     # a classe pode ser instanciada
-    lasanha = Dish("lasanha", 25.5)
-    outra_lasanha = Dish("lasanha", 25.5)
-    ravioli = Dish("ravioli", 20.5)
+    lasanha = Dish("lasanha", 25.50)
+    outra_lasanha = Dish("lasanha", 25.50)
+    ravioli = Dish("ravioli", 20.50)
 
     assert isinstance(lasanha, Dish)
 
     # "name" e "price" são iguais ao passado no construtor
     assert lasanha.name == "lasanha"
-    assert lasanha.price == 25.5
+    assert lasanha.price == 25.50
 
     assert outra_lasanha.name == "lasanha"
-    assert outra_lasanha.price == 25.5
+    assert outra_lasanha.price == 25.50
 
     assert ravioli.name == "ravioli"
-    assert ravioli.price == 20.5
+    assert ravioli.price == 20.50
 
     # comparacao entre pratos diferentes
     assert lasanha != ravioli
@@ -31,11 +31,11 @@ def test_dish():
 
     # TypeError para "price" não float
     with pytest.raises(TypeError):
-        Dish("lasanha", "25.5")
+        Dish("lasanha", "25.50")
 
     # ValueError para "price" negativo
     with pytest.raises(ValueError):
-        Dish("lasanha", -25.5)
+        Dish("lasanha", -25.50)
 
     # é possivel adicionar ingredientes ao prato
     massa_lasanha = Ingredient("massa de lasanha")
@@ -76,3 +76,7 @@ def test_dish():
 
     ingredientes_ravioli = {massa_ravioli, carne}
     assert ravioli.get_ingredients() == ingredientes_ravioli
+
+    # o método mágico __repr__ funciona como esperado
+    assert repr(lasanha) == "Dish('lasanha', R$25.50)"
+    assert repr(ravioli) == "Dish('ravioli', R$ 20.50)"
