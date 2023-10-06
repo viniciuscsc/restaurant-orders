@@ -1,5 +1,6 @@
 import pytest
 from src.models.dish import Dish  # noqa: F401, E261, E501
+from src.models.ingredient import Ingredient
 
 
 def test_dish():
@@ -35,3 +36,10 @@ def test_dish():
     # ValueError para "price" negativo
     with pytest.raises(ValueError):
         Dish("lasanha", -25.5)
+
+    # é possivel adicionar ingredientes ao prato
+    massa_lasanha = Ingredient("massa de lasanha")
+    massa_ravioli = Ingredient("massa de ravioli")
+
+    lasanha.add_ingredient_dependency(massa_lasanha, 500)
+    ravioli.add_ingredient_dependency(massa_ravioli, 300)
