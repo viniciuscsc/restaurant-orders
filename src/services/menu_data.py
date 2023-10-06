@@ -15,9 +15,9 @@ class MenuData:
 
             for linha in menu_dict:
                 nome_prato = linha["dish"]
-                preco = linha["price"]
+                preco = float(linha["price"])
                 nome_ingrediente = linha["ingredient"]
-                qtd_ingrediente = linha["recipe_amount"]
+                qtd_ingrediente = int(linha["recipe_amount"])
 
             if prato_atual is None or prato_atual.name != nome_prato:
                 prato_atual = Dish(nome_prato, preco)
