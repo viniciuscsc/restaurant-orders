@@ -1,3 +1,4 @@
+import pytest
 from src.models.dish import Dish  # noqa: F401, E261, E501
 
 
@@ -26,3 +27,11 @@ def test_dish():
     # comparacao entre pratos iguais
     assert lasanha == outra_lasanha
     assert hash(lasanha) == hash(outra_lasanha)
+
+    # TypeError para "price" não float
+    with pytest.raises(TypeError):
+        Dish("lasanha", "25.5")
+
+    # ValueError para "price" negativo
+    with pytest.raises(ValueError):
+        Dish("lasanha", -25.5)
