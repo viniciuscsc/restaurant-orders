@@ -18,3 +18,11 @@ def test_dish():
 
     assert ravioli.name == "ravioli"
     assert ravioli.price == 20.5
+
+    # comparacao entre pratos diferentes
+    assert lasanha != ravioli
+    assert hash(lasanha) != hash(ravioli)
+
+    # comparacao entre pratos iguais
+    assert lasanha == outra_lasanha
+    assert hash(lasanha) == hash(outra_lasanha)
