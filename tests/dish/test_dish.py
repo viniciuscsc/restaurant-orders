@@ -5,3 +5,6 @@ def test_dish():
     # a classe pode ser instanciada
     lasanha = Dish("lasanha", 20)
     assert isinstance(lasanha, Dish)
+
+    # "name" é igual ao passado no construtor
+    assert lasanha.name == "lasanha"
