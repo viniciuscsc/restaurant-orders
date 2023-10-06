@@ -5,13 +5,13 @@ from src.models.ingredient import Ingredient
 
 class MenuData:
     def __init__(self, source_path: str) -> None:
-        self.dishes = self.obter_menu(source_path)
+        self.source_path = source_path
+        self.dishes = set()
+        self.obter_menu()
 
-    def obter_menu(self, caminho_arquivo):
-        menu = set()
-
-        with open(caminho_arquivo, "r") as menu_csv:
-            menu_dict = csv.reader(menu_csv)
+    def obter_menu(self):
+        with open(self.source_path, "r", newline="") as menu_csv:
+            menu_dict = csv.DictReader(menu_csv)
 
             for linha in menu_dict:
                 prato = linha["dish"]
@@ -19,16 +19,14 @@ class MenuData:
                 ingrediente = linha["ingredient"]
                 qtd_ingrediente = int(linha["recipe_amount"])
 
-                if prato in menu:
-                    prato_atual = menu[prato]
-                else:
+                if prato not in self.dishes:
                     prato_atual = Dish(prato, preco)
-                    menu[prato] = prato_atual
+                    self.dishes[prato] = prato_atual
+                    self.dishes.add(prato_atual)
+                else:
+                    prato_atual = self.dishes[prato]
 
                 ingrediente_atual = Ingredient(ingrediente)
-
                 prato_atual.add_ingredient_dependency(
                     ingrediente_atual, qtd_ingrediente
                 )
-
-        return menu
