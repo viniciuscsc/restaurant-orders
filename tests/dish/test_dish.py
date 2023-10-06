@@ -69,3 +69,10 @@ def test_dish():
 
     restricoes_ravioli = restricoes_massa_ravioli.union(restricoes_carne)
     assert ravioli.get_restrictions() == restricoes_ravioli
+
+    # "get_ingredients" retorna um set de ingredientes
+    ingredientes_lasanha = {massa_lasanha, mussarela}
+    assert lasanha.get_ingredients() == ingredientes_lasanha
+
+    ingredientes_ravioli = {massa_ravioli, carne}
+    assert ravioli.get_ingredients() == ingredientes_ravioli
