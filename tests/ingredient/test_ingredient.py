@@ -16,11 +16,11 @@ def test_ingredient():
     restricoes_mussarela = {Restriction.LACTOSE, Restriction.ANIMAL_DERIVED}
     assert mussarela.restrictions == restricoes_mussarela
 
-    # o método mágico __repr__ funcione como esperado
+    # o método mágico __repr__ funciona como esperado
     repr_mussarela = "Ingredient('queijo mussarela')"
     assert repr(mussarela) == repr_mussarela
 
-    # o método mágico __eq__ funcione como esperado
+    # o método mágico __eq__ funciona como esperado
     outra_mussarela = Ingredient("queijo mussarela")
     assert mussarela == outra_mussarela
     assert repr(mussarela) == repr(outra_mussarela)
@@ -29,7 +29,7 @@ def test_ingredient():
     assert mussarela != farinha
     assert repr(mussarela) != repr(farinha)
 
-    # o método mágico __hash__ funcione como esperado
+    # o método mágico __hash__ funciona como esperado
     assert hash(mussarela) == hash("queijo mussarela")
     assert hash(mussarela) == hash(outra_mussarela)
     assert hash(mussarela) != hash(farinha)
