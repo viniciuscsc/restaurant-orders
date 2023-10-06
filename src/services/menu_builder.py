@@ -26,4 +26,19 @@ class MenuBuilder:
 
     # Req 4
     def get_main_menu(self, restriction=None) -> List[Dict]:
-        pass
+        menu_principal = list()
+
+        for prato in self.menu_data.dishes:
+            if (
+                restriction is None
+                or restriction not in prato.get_restrictions()
+            ):
+                informacoes_prato = {
+                    "dish_name": prato.name,
+                    "ingredients": prato.get_ingredients(),
+                    "price": prato.price,
+                    "restrictions": prato.get_restrictions(),
+                }
+                menu_principal.append(informacoes_prato)
+
+        return menu_principal
