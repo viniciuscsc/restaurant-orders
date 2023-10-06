@@ -39,11 +39,33 @@ def test_dish():
 
     # é possivel adicionar ingredientes ao prato
     massa_lasanha = Ingredient("massa de lasanha")
-    massa_ravioli = Ingredient("massa de ravioli")
+    mussarela = Ingredient("queijo mussarela")
 
     lasanha.add_ingredient_dependency(massa_lasanha, 500)
+    lasanha.add_ingredient_dependency(mussarela, 400)
+
+    massa_ravioli = Ingredient("massa de ravioli")
+    carne = Ingredient("carne")
+
     ravioli.add_ingredient_dependency(massa_ravioli, 300)
+    ravioli.add_ingredient_dependency(carne, 200)
 
     # é possível obter a quantidade de ingrediente adicionado
     assert lasanha.recipe.get(massa_lasanha) == 500
+    assert lasanha.recipe.get(mussarela) == 400
+
     assert ravioli.recipe.get(massa_ravioli) == 300
+    assert ravioli.recipe.get(carne) == 200
+
+    # "get_restrictions" retorna um set de restricoes
+    restricoes_massa_lasanha = massa_lasanha.restrictions
+    restricoes_mussarela = mussarela.restrictions
+
+    restricoes_lasanha = restricoes_massa_lasanha.union(restricoes_mussarela)
+    assert lasanha.get_restrictions() == restricoes_lasanha
+
+    restricoes_massa_ravioli = massa_ravioli.restrictions
+    restricoes_carne = carne.restrictions
+
+    restricoes_ravioli = restricoes_massa_ravioli.union(restricoes_carne)
+    assert ravioli.get_restrictions() == restricoes_ravioli
