@@ -79,4 +79,4 @@ def test_dish():
 
     # o método mágico __repr__ funciona como esperado
     assert repr(lasanha) == "Dish('lasanha', R$25.50)"
-    assert repr(ravioli) == "Dish('ravioli', R$ 20.50)"
+    assert repr(ravioli) == "Dish('ravioli', R$20.50)"
